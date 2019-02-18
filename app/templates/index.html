@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Burndown Chart</h1>
+        {{html_chart|safe}}
+      </div>
+
+    </div><!-- /.container -->
+
+{% endblock %}

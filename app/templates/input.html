@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+{% set vars = {'old': form} %}
+  <form action="" method=post class="form-horizontal"  enctype=multipart/form-data>
+    <div class="control-group">
+        {{ form.csrf_token }}
+        <p>
+           Data
+             {{form.date()}}
+         </p>
+        <p>
+           Incremento
+             {{form.qtd()}}
+         </p>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          {{form.submit()}}
+        </div>
+    </div>
+  </form>
+{% endblock %}
+
