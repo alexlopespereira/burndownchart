@@ -18,3 +18,4 @@ WTForms==2.1
 matplotlib==3.0.2
 mpld3==0.3
 numpy==1.16.1
+apscheduler==3.5.3
