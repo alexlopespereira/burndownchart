@@ -26,7 +26,7 @@ def get_burndown_points(maxy, maxx):
 
 
 def days_between(d1, d2):
-    return abs((d2 - d1).days)+1
+    return abs((d2 - d1).days)
 
 
 def save_data(path, data):
@@ -49,7 +49,7 @@ def updated_data(path, init_date_str, curr_date_str, final_date_str, qtd):
     maxy = y1[last_past_days] - qtd
     maxx = remaining_days
     x1, new_y1 = get_burndown_points(maxx=maxx, maxy=maxy)
-    constant_array = np.repeat(last_maxy, past_days - last_past_days)
+    constant_array = np.repeat(last_maxy, past_days - last_past_days + 1)
     y1= np.concatenate((y1[0:last_past_days-1], constant_array, new_y1), axis=0)
     save_data(path=path, data=y1)
     save_variables(past_days, maxy, variables_path)
@@ -78,7 +78,7 @@ def create_chart(path, n_servicos, init_date_str, final_date_str):
 def create_initial_data(path, n_servicos, init_date_str, final_date_str):
     init_date = datetime.datetime.strptime(init_date_str, "%Y-%m-%d")
     final_date = datetime.datetime.strptime(final_date_str, "%Y-%m-%d")
-    remaining_days = days_between(datetime.datetime.now(), final_date)
+    remaining_days = days_between(datetime.datetime.now(), final_date)+1
     curr_date_str = datetime.datetime.now().strftime("%Y-%m-%d")
     curr_date = datetime.datetime.strptime(curr_date_str, "%Y-%m-%d")
     past_days = days_between(curr_date, init_date)

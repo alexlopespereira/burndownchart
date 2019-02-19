@@ -1,9 +1,13 @@
+import datetime
+
 from flask import Flask, Response, redirect, url_for, request, render_template, flash, g
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
-
 from forms import InputForm
 from burndownchart import create_chart, updated_data, create_initial_data
 from users import users, User
+import time
+import atexit
+from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 
@@ -14,6 +18,19 @@ app.config.update(
     DEBUG=True,
     SECRET_KEY='secret_xxx'
 )
+
+def update_chart_no_increment():
+    curr_date_str = datetime.datetime.now().strftime("%Y-%m-%d")
+    curr_date = datetime.datetime.strptime(curr_date_str, "%Y-%m-%d")
+    updated_data(path_progress_data, init_date_str, curr_date.strftime("%Y-%m-%d"), final_date_str, 0)
+
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=update_chart_no_increment, trigger="interval", days=1)
+scheduler.start()
+
+# Shut down the scheduler when exiting the app
+atexit.register(lambda: scheduler.shutdown())
 
 # flask-login
 login_manager = LoginManager()
