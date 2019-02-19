@@ -25,12 +25,12 @@ def update_chart_no_increment():
     updated_data(path_progress_data, init_date_str, curr_date.strftime("%Y-%m-%d"), final_date_str, 0)
 
 
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=update_chart_no_increment, trigger="interval", days=1)
-scheduler.start()
+# scheduler = BackgroundScheduler()
+# scheduler.add_job(func=update_chart_no_increment, trigger="interval", days=1)
+# scheduler.start()
 
 # Shut down the scheduler when exiting the app
-atexit.register(lambda: scheduler.shutdown())
+# atexit.register(lambda: scheduler.shutdown())
 
 # flask-login
 login_manager = LoginManager()
