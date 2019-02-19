@@ -14,3 +14,4 @@ RUN sed -i -e 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
 ENV LANG pt_BR.UTF-8
 ENV LC_ALL pt_BR.UTF-8
 
+RUN python /app/init_series.py
