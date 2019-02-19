@@ -46,7 +46,7 @@ def updated_data(path, init_date_str, curr_date_str, final_date_str, qtd):
     last_past_days, last_maxy = load_variables(variables_path)
     y1 = load_progress_data(path=path)
     remaining_days = days_between(curr_date, final_date)
-    maxy = y1[past_days] - qtd
+    maxy = y1[last_past_days] - qtd
     maxx = remaining_days
     x1, new_y1 = get_burndown_points(maxx=maxx, maxy=maxy)
     constant_array = np.repeat(last_maxy, past_days - last_past_days)
