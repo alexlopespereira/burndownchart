@@ -91,7 +91,6 @@ def reset():
 
 
 @app.route('/', methods=["GET", "POST"])
-@login_required
 def home():
     html = create_chart(path_progress_data, n_servicos, init_date_str, final_date_str)
     return render_template('index.html', html_chart=html)
