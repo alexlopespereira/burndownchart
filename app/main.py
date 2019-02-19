@@ -1,9 +1,7 @@
-import os
 from flask import Flask, Response, redirect, url_for, request, render_template, flash, g
-from flask_login import LoginManager, UserMixin, \
-    login_required, login_user, logout_user, current_user
-import subprocess, signal
-from app.forms import InputForm
+from flask_login import LoginManager, login_required, login_user, logout_user, current_user
+
+from forms import InputForm
 from burndownchart import create_chart, updated_data, create_initial_data
 from users import users, User
 

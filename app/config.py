@@ -27,5 +27,5 @@ class ProductionConfig(BaseConfig):
     SECRET_KEY = 'my_precious'
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = 'postgresql://user:user@localhost/db'
-    BURNDOWN_PATH = '/var/www/app/burndownchart.py'
+    BURNDOWN_PATH = '/app/burndownchart.py'
 

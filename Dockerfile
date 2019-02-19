@@ -1,8 +1,7 @@
-FROM tiangolo/uwsgi-nginx-flask:flask
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 COPY ./app /app
-COPY ./users.py /app/
-# copy over our requirements.txt file
+
 COPY ./app/requirements.txt /tmp/
 # upgrade pip and install required python packages
 RUN pip install -U pip
@@ -15,5 +14,3 @@ RUN sed -i -e 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
 ENV LANG pt_BR.UTF-8
 ENV LC_ALL pt_BR.UTF-8
 
-EXPOSE 8888
-CMD ["python3", "/var/www/app/burndownchart.py"]

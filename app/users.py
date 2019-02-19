@@ -27,4 +27,4 @@ class User(UserMixin):
     def __repr__(self):
         return "%d/%s/%s" % (self.id, self.email, self.password)
 
-users = [User('1', 'panmacro@planejamento.gov.br', 'bib123456'), User('2','alex.pereira@planejamento.gov.br','@Lex2017')]
+users = [User('1', 'teste@planejamento.gov.br', 'teste123')]
