@@ -17,5 +17,5 @@ Werkzeug==0.14.1
 WTForms==2.1
 matplotlib==3.0.2
 mpld3==0.3
-numpy==1.16.1
+numpy==1.22.0
 apscheduler==3.5.3
